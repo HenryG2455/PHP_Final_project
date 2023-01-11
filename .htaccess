@@ -1,0 +1,39 @@
+#URL mapping for REST API Demo
+#Note: "NC" means case insensitive
+RewriteEngine on
+#Quizzes
+RewriteRule ^quizapp/quizzes$ api/quizService.php [NC]
+RewriteRule ^quizapp/catergory$ api/catService.php [NC]
+RewriteRule ^HomePages/quizapp/catergory$ api/catService.php [NC]
+RewriteRule ^quizapp/quizzes/search:tags=(([A-Za-z0-9\s:,-]+))$ searches/searchQuizzesByTags.php?tags=$1 [NC]
+RewriteRule ^quizapp/quizzes/(\w+)$ api/quizService.php?quizID=$1[NC]
+#Quiz Results
+RewriteRule ^quizapp/quizresults$ api/quizResultService.php [NC]
+RewriteRule ^quizapp/quizresults/search:username=(\w+)$ api/quizResultService.php?username=$1  [NC]
+
+#USERS
+RewriteRule ^HomePages/account/user$ api/userService.php [NC]
+RewriteRule ^account/user$ api/userService.php [NC]
+RewriteRule ^HomePages/account/users$ api/usersService.php [NC]
+#RewriteRule ^quizapp/quizzes/
+#Rewriterule ^quizapp/quizzes/search:tags=([A-Za-z0-9|]+)$ api/quizService?tags=$1&all=true [NC]
+#Rewriterule ^quizapp/quizzes/search:tags=([A-Za-z0-9,]+)$ api/quizService?tags=$1[NC]
+#RewriteRule ^quizapp/questions/search:tags=([A-Za-z0-9 |]+)$ searches/searchQuestionsByTags.php?tags=$1 [NC]
+#RewriteRule ^quizapp/questions/searchAll:tags=([A-Za-z0-9 |]+)$ searches/searchQuestionsByTags.php?tags=$1&all=true [NC]
+
+
+#RewriteRule ^quizapp/quizzes/search:tags=([A-Za-z |]+)$ api/quizService.php?tags=$1 [NC]
+#RewriteRule ^quizapp/quizzes/searchAll:tags=([A-Za-z0-9 |]+)$ searches/searchQuizzesByTags.php?tags=$1&all=true [NC]
+
+#RewriteRule ^quizapp/quizResults/search:tags=([A-Za-z0-9 |]+)$ searches/searchQuizResultsByTags.php?tags=$1 [NC]
+#RewriteRule ^quizapp/quizResults/searchAll:tags=([A-Za-z0-9 |]+)$ searches/searchQuizResultsByTags.php?tags=$1&all=true [NC]
+
+#Quiz
+RewriteRule ^HomePages/quizResults/search:scoremin=(\d+)&scoremax=(\d+)$ searches/searchByScore.php?scoremin=$1&scoremax=$2 [NC]
+RewriteRule ^HomePages/quizResults/search:mindate=(.+)&maxdate=(.+)$ searches/searchByDate.php?mindate=$1&maxdate=$2 [NC]
+RewriteRule ^HomePages/quizResults/search:user=(\w+)$ searches/searchByUser.php?username=$1 [NC]
+RewriteRule ^HomePages/quizResults/search:tags=(.+)$ searches/searchByTags.php?tags=$1 [NC]
+RewriteRule ^HomePages/quizResults/search:questionTags=(.+)$ searches/searchQuestionsByTags.php?tags=$1 [NC]
+RewriteRule ^HomePages/quizResults/search:aggregatedQuiz=(.+)$ searches/searchAggregatedQuiz.php?tags=$1 [NC]
+
+#Question
